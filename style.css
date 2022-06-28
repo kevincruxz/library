@@ -1,0 +1,24 @@
+.card {
+    border: solid 5px black;
+    width: 150px;
+    height: 150px;
+    transition: 0.5s;
+    border-radius: 15px;
+}
+
+.card-space {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.expanded-card {
+    transform: scale(1.5);
+    margin: 50px;
+}
+
+.header {
+    padding: 10px;
+    border-bottom: solid 2px black;
+    margin-bottom: 5px;
+}
