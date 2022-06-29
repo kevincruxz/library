@@ -42,13 +42,53 @@ function createCardHtml(book) {
 
 function makeInteractive(card) {
     card.addEventListener('click', (e) => {
-        card.classList.contains('expanded-card') ? card.classList.remove('expanded-card') : card.classList.add('expanded-card')
+        card.classList.contains('expanded-card') ? card.classList.remove('expanded-card') : card.classList.add('expanded-card');
     });
     return card;
 }
 
 function displayNewBookButton() {
-    return;
+    const button = document.createElement('img');
+    button.src = 'img/plus-symbol-transparent-images-png-arts-163387.png';
+    button.style.cssText = 'width: 100px;'
+    const buttonSpace = document.createElement('div');
+    buttonSpace.classList.add('new-button');
+    document.querySelector('.card-space').appendChild(buttonSpace).appendChild(button);
+    makeItWork(buttonSpace);
+}
+
+function makeItWork(button) {
+    button.addEventListener('click', (e) => {
+        button.classList.add('expanded-new-button');
+        createForm(button);
+    });
+}
+
+function createForm(button) {
+    const img = document.querySelector('img') 
+    document.querySelector('.new-button').removeChild(img);
+    const formDiv = document.createElement('div');
+    formDiv.innerHTML = `
+    <form action="" class="form">
+        <label for="title">Title</label>
+        <input type="text" id="title">
+
+        <label for="author">Author</label>
+        <input type="text">
+
+        <label for="year">Year</label>
+        <input type="number">
+
+        <label for="read">Readed</label>
+        <div class="yes-no-buttons">
+            <input type="radio" value="yes" name="read">Yes</input>
+            <input type="radio" value="no" name="read">No</input>
+        </div>
+
+        <input type="submit">
+    </form>`;
+    formDiv.classList.add('form');
+    document.querySelector('.new-button').appendChild(formDiv);
 }
 
 addToLibrary('kk', 'aasas', 2121, true);
